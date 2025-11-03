@@ -1,2 +1,3 @@
-Simple C programs. <br>
-This is my personal repo to practice C questions :p </br>
+<h1 align="center">Simple C Programs</h1>
+
+This is my personal C repository to add C programs into it along with their output, which can be run in any online compiler.
