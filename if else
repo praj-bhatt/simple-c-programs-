@@ -1,0 +1,29 @@
+# Basic If Else program.
+
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    printf("Enter value of a:\n");
+    scanf("%d", &a);
+
+    printf("Enter value of b:\n");
+    scanf("%d", &b);
+
+    if (a > b) {
+        printf("a is greater\n");
+    } else {
+        printf("b is greater\n");
+    }
+
+    return 0;
+}
+
+Output:
+
+Enter value of a:
+3
+Enter Value of b:
+4
+b is greater
