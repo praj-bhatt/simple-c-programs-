@@ -1,0 +1,30 @@
+The Tower of Hanoi is a mathematical puzzle consisting of three rods and a number of disks of different sizes, which can slide onto any rod. 
+The goal is to move the entire stack of disks from one rod to another, following two rules: 
+1) Only one disk can be moved at a time. 
+2) A larger disk cannot be placed on top of a smaller disk.
+
+Code:
+
+#include <stdio.h>
+
+void hanoi(int n, char A, char B, char C) {
+    if(n == 1)
+{
+  printf("Move disk 1 from %c to %c\n", A, C);
+return;
+}
+    hanoi(n-1, A, C, B);
+printf("Move disk %d from %c to %c\n", n, A, C);
+ hanoi(n-1, B, A, C);
+}
+
+int main() 
+{
+  
+int n;
+printf("Enter number of disks: ");
+    
+scanf("%d", &n);
+
+ hanoi(n, 'A', 'B', 'C');
+return 0; }
