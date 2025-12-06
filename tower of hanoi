@@ -5,7 +5,7 @@ The goal is to move the entire stack of disks from one rod to another, following
 
 The puzzle is solved using recursive algorithm.
 
-For n disks, the minimum number of moves required is 2^n - 1.
+For x number of disks, the minimum number of moves required is (2^x) - 1.
 
 Code:
 
@@ -29,3 +29,15 @@ scanf("%d", &n);
 
 hanoi(n, 'A', 'B', 'C');
 return 0; }
+
+#Sample Output:
+
+Enter number of disks: 3
+
+Move disk 1 from A to C
+Move disk 2 from A to B
+Move disk 1 from C to B
+Move disk 3 from A to C
+Move disk 1 from B to A
+Move disk 2 from B to C
+Move disk 1 from A to C
