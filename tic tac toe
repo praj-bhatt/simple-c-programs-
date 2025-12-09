@@ -1,0 +1,61 @@
+#This is a C program where in you enter the board for your tic tac toe, and the program gives you the immediate moves possible to win, whether for O or for X.
+
+#include <stdio.h>
+
+int win(char b[3][3], char p)
+{
+    int i;
+
+    for (i = 0; i < 3; i++)
+    if ((b[i][0] == p && b[i][1] == p && b[i][2] == p) ||
+    (b[0][i] == p && b[1][i] == p && b[2][i] == p))
+    return 1;
+
+  if ((b[0][0] == p && b[1][1] == p && b[2][2] == p) ||
+  (b[0][2] == p && b[1][1] == p && b[2][0] == p))
+    return 1;
+
+    return 0; }
+int main()
+{
+    char b[3][3];
+    int i, j, r = -1, c = -1;
+           printf("Enter the board (X O _):\n");
+
+    for (i = 0; i < 3; i++)
+    for (j = 0; j < 3; j++)
+    scanf(" %c", &b[i][j]);
+
+    for (i = 0; i < 3; i++)
+    { for (j = 0; j < 3; j++)
+        {
+      if (b[i][j] == '_')
+            { b[i][j] = 'O';
+                if (win(b, 'O'))
+                {    r = i;
+                    c = j;
+                    b[i][j] = '_';
+                    break;
+                }
+                b[i][j] = '_'; }
+                  }
+        if (r != -1)
+            break; }
+
+    if (r != -1)
+        printf("\nWinning Move for O: Row = %d, Column = %d\n", r + 1, c + 1);
+    else
+        printf("\nNo immediate winning move available.\n");
+
+    return 0; }
+
+
+#Output: (Keeping in mind that the code will only give the immediate move possible only.)
+
+
+Enter the board (X O _):
+X O _
+O _ X   
+X O _
+
+Winning Move for O: Row = 2, Column = 2
