@@ -11,7 +11,6 @@ int main() {
 
     t = n;
 
-    // Counting the number of digits
     while (t != 0) {
         t = t / 10;
         c++;
@@ -19,14 +18,12 @@ int main() {
 
     t = n;
 
-    // Calculating sum of powers of digits
     while (t != 0) {
         r = t % 10;
         s = s + pow(r, c);
         t = t / 10;
     }
 
-    // Checking if Armstrong
     if (s == n)
         printf("%d is an Armstrong number.\n", n);
     else
