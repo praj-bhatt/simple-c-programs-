@@ -1,0 +1,50 @@
+#This is a working analog clock for turbo C++
+
+#include <graphics.h>
+#include <math.h>
+#include <dos.h>
+#include <time.h>
+
+#define PI 3.14159
+
+int main() {
+    int gd = DETECT, gm;
+    initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
+
+    int xc = 320, yc = 240, r = 150;
+
+    while(!kbhit()) {
+        cleardevice();
+
+        
+        circle(xc, yc, r);
+
+        time_t t = time(NULL);
+        struct tm *tm = localtime(&t);
+
+        
+        float sec_angle = tm->tm_sec * 6;
+        float min_angle = tm->tm_min * 6 + tm->tm_sec * 0.1;
+        float hr_angle  = (tm->tm_hour % 12) * 30 + tm->tm_min * 0.5;
+
+        
+        line(xc, yc,
+             xc + r * sin(sec_angle * PI / 180),
+             yc - r * cos(sec_angle * PI / 180));
+
+        
+        line(xc, yc,
+             xc + (r-20) * sin(min_angle * PI / 180),
+             yc - (r-20) * cos(min_angle * PI / 180));
+
+        
+        line(xc, yc,
+             xc + (r-40) * sin(hr_angle * PI / 180),
+             yc - (r-40) * cos(hr_angle * PI / 180));
+
+        delay(1000);
+    }
+
+    closegraph();
+    return 0;
+}
