@@ -1,0 +1,32 @@
+#THis code greets you based on the time of the day in 24-hour format 
+
+#include <stdio.h>
+
+int main() {
+    int hour, minute;
+
+    printf("Enter time in 24-hour format (HH:MM): ");
+    scanf("%d:%d", &hour, &minute);
+
+    
+    if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+        printf("Invalid time entered. Program terminated.\n");
+        return 0;
+    }
+
+    
+    if (hour >= 0 && hour < 12) {
+        printf("Good Morning!\n");
+    }
+    else if (hour >= 12 && hour < 16) {
+        printf("Good Afternoon!\n");
+    }
+    else if (hour >= 16 && hour < 20) {
+        printf("Good Evening!\n");
+    }
+    else {
+        printf("Good Night!\n");
+    }
+
+    return 0;
+}
