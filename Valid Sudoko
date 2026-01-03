@@ -1,0 +1,54 @@
+Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+A) Each row must contain the digits 1-9 without repetition.
+B) Each column must contain the digits 1-9 without repetition.
+C) Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+
+Note:
+
+1) A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+2) Only the filled cells need to be validated according to the mentioned rules.
+
+Leetcode oriented solution:
+
+#include <stdbool.h>
+
+bool isValidSudoku(char** board, int boardSize, int* boardColSize) {
+    // Arrays to track digits 1-9 seen in rows, columns, and 3x3 boxes
+    // rowSeen[9][10], colSeen[9][10], boxSeen[9][10]
+    int rowSeen[9][10] = {0};
+    int colSeen[9][10] = {0};
+    int boxSeen[9][10] = {0};
+
+    for (int r = 0; r < 9; r++) {
+        for (int c = 0; c < 9; c++) {
+            char current = board[r][c];
+            
+            // Only validate filled cells
+            if (current != '.') {
+                int val = current - '0'; // Convert char to integer
+                
+                // Calculate which of the nine 3x3 boxes the cell belongs to
+                int boxIndex = (r / 3) * 3 + (c / 3);
+                
+                // Check if the value has already been seen in this row, col, or box
+                if (rowSeen[r][val] || colSeen[c][val] || boxSeen[boxIndex][val]) {
+                    return false;
+                }
+                
+                // Mark the value as seen
+                rowSeen[r][val] = 1;
+                colSeen[c][val] = 1;
+                boxSeen[boxIndex][val] = 1;
+            }
+        }
+    }
+
+    return true;
+}
+
+
+
+
+
+N
