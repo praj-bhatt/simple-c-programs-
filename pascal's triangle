@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <conio.h>
+#include <alloc.h>
+
+void generatePascal(int numRows) {
+    int i, j;
+    long **triangle = (long **)malloc(numRows * sizeof(long *));
+
+    for (i = 0; i < numRows; i++) {
+        triangle[i] = (long *)malloc((i + 1) * sizeof(long));
+
+        for (j = 0; j <= i; j++) {
+            if (j == 0 || j == i) {
+                triangle[i][j] = 1;
+            } else {
+                triangle[i][j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
+            }
+            printf("%ld ", triangle[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (i = 0; i < numRows; i++) {
+        free(triangle[i]);
+    }
+    free(triangle);
+}
+
+void main() {
+    int rows;
+    clrscr();
+
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+
+    if (rows > 0) {
+        generatePascal(rows);
+    }
+
+    getch();
+}
