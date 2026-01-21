@@ -1,4 +1,4 @@
-#THis code greets you based on the time of the day in 24-hour format 
+#THis code greets you based on the time of the day in 24-hour format
 
 #include <stdio.h>
 
