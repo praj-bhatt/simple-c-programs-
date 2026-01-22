@@ -26,17 +26,11 @@ bool isValidSudoku(char** board, int boardSize, int* boardColSize) {
             
             // Only validate filled cells
             if (current != '.') {
-                int val = current - '0'; // Convert char to integer
-                
-                // Calculate which of the nine 3x3 boxes the cell belongs to
+                int val = current - '0'; 
                 int boxIndex = (r / 3) * 3 + (c / 3);
-                
-                // Check if the value has already been seen in this row, col, or box
                 if (rowSeen[r][val] || colSeen[c][val] || boxSeen[boxIndex][val]) {
                     return false;
                 }
-                
-                // Mark the value as seen
                 rowSeen[r][val] = 1;
                 colSeen[c][val] = 1;
                 boxSeen[boxIndex][val] = 1;
